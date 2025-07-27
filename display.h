@@ -10,10 +10,6 @@
 
 // Protótipos de funções
 void display_init(void);
-void write_led(void);
-void display_ip_address(uint8_t *ip_address);
-void display_status(int status);
 void display_status_msg(char status_msg[]) ;
-void display_joystick(uint16_t vrx_value, uint16_t vry_value);
 
 #endif // DISPLAY_H
