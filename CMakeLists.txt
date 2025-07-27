@@ -28,36 +28,36 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(Luminosidade C CXX ASM)
+project(main C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(Luminosidade Luminosidade.c display.c bh1750.c inc/ssd1306_i2c.c)
+add_executable(main main.c display.c bh1750.c inc/ssd1306_i2c.c)
 
-pico_set_program_name(Luminosidade "Luminosidade")
-pico_set_program_version(Luminosidade "0.1")
+pico_set_program_name(main "main")
+pico_set_program_version(main "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(Luminosidade 0)
-pico_enable_stdio_usb(Luminosidade 0)
+pico_enable_stdio_uart(main 0)
+pico_enable_stdio_usb(main 0)
 
 # Add the standard library to the build
-target_link_libraries(Luminosidade
+target_link_libraries(main
         pico_stdlib)
 
 # Add the standard include files to the build
-target_include_directories(Luminosidade PRIVATE
+target_include_directories(main PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
-target_link_libraries(Luminosidade 
+target_link_libraries(main 
         hardware_i2c
         
         )
 
-pico_add_extra_outputs(Luminosidade)
+pico_add_extra_outputs(main)
 
